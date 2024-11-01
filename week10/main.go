@@ -11,14 +11,14 @@ import (
 )
 
 func main() {
-	fmt.Print("정수 입력 : ")
+	fmt.Print("Input number : ")
 	in := bufio.NewReader(os.Stdin)
 	i, err := in.ReadString('\n')
 
 	if err != nil {
 		log.Fatal(err)
 	}
-	i = strings.TrimSpace(i) // 줄바꿈등 제거, 파이썬의 strip 함수와 비슷
+	i = strings.TrimSpace(i)
 	n, err := strconv.Atoi(i)
 	if err != nil {
 		log.Fatal(err)
@@ -32,15 +32,15 @@ func main() {
 		isPrime = true
 	} else if n%2 == 0 { // All even numbers except 2 are not prime.
 		isPrime = false
-	} else {
-		j := 2
+	} else { // odd number
+		j := 3 // start value
 		for j <= int(math.Sqrt(float64(n))) {
 			if n%j == 0 {
 				isPrime = false
 				break
 			}
 			fmt.Printf("%d ", j) // Check j loop
-			j++
+			j = j + 2            // increment
 		}
 	}
 	if isPrime {
