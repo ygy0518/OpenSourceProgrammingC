@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"log"
-	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -30,17 +29,18 @@ func main() {
 		isPrime = false
 	} else if n == 2 {
 		isPrime = true
-	} else if n%2 == 0 { // All even numbers except 2 are not prime.
+	} else if n%2 == 0 {
 		isPrime = false
-	} else { // odd number
-		j := 3 // start value
-		for j <= int(math.Sqrt(float64(n))) {
+	} else {
+		j := 3
+		//for j <= int(math.Sqrt(float64(n))) {
+		for j*j <= n {
 			if n%j == 0 {
 				isPrime = false
 				break
 			}
-			fmt.Printf("%d ", j) // Check j loop
-			j = j + 2            // increment
+			fmt.Printf("%d ", j)
+			j = j + 2
 		}
 	}
 	if isPrime {
