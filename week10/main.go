@@ -28,12 +28,16 @@ func main() {
 	// bug fix
 	if n <= 1 {
 		isPrime = false
+	} else if n == 2 {
+		isPrime = true
+	} else if n%2 == 0 { // All even numbers except 2 are not prime.
+		isPrime = false
 	} else {
 		j := 2
 		for j <= int(math.Sqrt(float64(n))) {
 			if n%j == 0 {
 				isPrime = false
-				break // performance up
+				break
 			}
 			fmt.Printf("%d ", j) // Check j loop
 			j++
